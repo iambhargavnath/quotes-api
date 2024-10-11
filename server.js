@@ -8,7 +8,6 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/uploads', express.static('uploads')); // Serve uploaded files
 app.use('/quotes', quoteRoutes);
 
 // Sync database and start server
