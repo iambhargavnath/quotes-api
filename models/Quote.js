@@ -15,11 +15,7 @@ Quote.init({
   author: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  authorImage: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+  }
 }, {
   sequelize,
   modelName: 'Quote',

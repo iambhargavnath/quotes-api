@@ -17,8 +17,7 @@ const upload = multer({ storage });
 exports.createQuote = upload.single('authorImage'), async (req, res) => {
   try {
     const { quote, language, author } = req.body;
-    const authorImage = req.file.filename;
-    const newQuote = await Quote.create({ quote, language, author, authorImage });
+    const newQuote = await Quote.create({ quote, language, author});
     res.status(201).json(newQuote);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -50,9 +49,8 @@ exports.updateQuote = upload.single('authorImage'), async (req, res) => {
     if (!quote) return res.status(404).json({ error: 'Quote not found' });
     
     const { quote: updatedQuote, language, author } = req.body;
-    const authorImage = req.file ? req.file.filename : quote.authorImage;
     
-    await quote.update({ quote: updatedQuote, language, author, authorImage });
+    await quote.update({ quote: updatedQuote, language, author });
     res.json(quote);
   } catch (error) {
     res.status(500).json({ error: error.message });
